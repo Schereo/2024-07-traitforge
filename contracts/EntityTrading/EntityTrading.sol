@@ -60,6 +60,7 @@ contract EntityTrading is IEntityTrading, ReentrancyGuard, Ownable, Pausable {
   }
 
   // function to buy an NFT listed for sale
+  // @audit q: Can you buy an NFT for which the listing is inactive?
   function buyNFT(uint256 tokenId) external payable whenNotPaused nonReentrant {
     Listing memory listing = listings[listedTokenIds[tokenId]];
     require(

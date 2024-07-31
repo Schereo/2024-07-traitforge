@@ -196,6 +196,7 @@ contract EntityForging is IEntityForging, ReentrancyGuard, Ownable, Pausable {
     emit CancelledListingForForging(tokenId); // Emitting with 0 fee to denote cancellation
   }
 
+  // Resets forging count if a year has passed since the last reset
   function _resetForgingCountIfNeeded(uint256 tokenId) private {
     uint256 oneYear = oneYearInDays;
     if (lastForgeResetTimestamp[tokenId] == 0) {
